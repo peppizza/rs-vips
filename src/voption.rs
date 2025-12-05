@@ -41,7 +41,7 @@ pub fn call_option_string(
     let operation = new_c_string(operation).unwrap();
     let option_string = new_c_string(option_string).unwrap();
     call_option_string_(
-        operation.as_ptr(),
+        operation.as_ptr() as _,
         option_string.as_ptr() as _,
         option,
     )
@@ -53,12 +53,12 @@ pub(crate) fn call_option_string_(
     option: VOption,
 ) -> std::os::raw::c_int {
     unsafe {
-        let mut vips_operation = vips_operation_new(operation);
+        let mut vips_operation = vips_operation_new(operation as _);
 
         if !option_string.is_null()
             && vips_object_set_from_string(
                 vips_operation as _,
-                option_string,
+                option_string as _,
             ) < 0
         {
             vips_object_unref_outputs(vips_operation as _);

@@ -79,8 +79,8 @@ impl VipsImage {
 
             let mut out_out = VipsImage::from(null_mut());
             call_option_string_(
-                operation,
-                string_options,
+                operation as _,
+                string_options as _,
                 option
                     .set(
                         "filename",
@@ -208,7 +208,7 @@ impl VipsImage {
             let mut out_out = VipsImage::from(null_mut());
             let blob = VipsBlob::from(vips_blob);
             call_option_string_(
-                operation,
+                operation as _,
                 utils::new_c_string(option_str)?.as_ptr() as _,
                 option
                     .set(
@@ -256,7 +256,7 @@ impl VipsImage {
 
             let mut out_out = VipsImage::from(null_mut());
             call_option_string_(
-                operation,
+                operation as _,
                 utils::new_c_string(option_str)?.as_ptr() as _,
                 option
                     .set(
@@ -669,8 +669,8 @@ impl VipsImage {
             }
 
             let res = call_option_string_(
-                operation,
-                string_options,
+                operation as _,
+                string_options as _,
                 option
                     .set("in", self)
                     .set(
@@ -724,8 +724,8 @@ impl VipsImage {
             if !operation.is_null() {
                 let target = VipsTarget::new_to_memory()?;
                 let res = call_option_string_(
-                    operation,
-                    string_options,
+                    operation as _,
+                    string_options as _,
                     option
                         .set("in", self)
                         .set(
@@ -756,8 +756,8 @@ impl VipsImage {
 
             let mut buffer_out = VipsBlob::from(null_mut());
             let res = call_option_string_(
-                operation,
-                string_options,
+                operation as _,
+                string_options as _,
                 option
                     .set("in", self)
                     .set(
@@ -803,8 +803,8 @@ impl VipsImage {
             }
 
             let res = call_option_string_(
-                operation,
-                string_options,
+                operation as _,
+                string_options as _,
                 option
                     .set("in", self)
                     .set(
